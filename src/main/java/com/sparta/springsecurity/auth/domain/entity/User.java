@@ -1,6 +1,6 @@
-package com.sparta.springsecurity.entity;
+package com.sparta.springsecurity.auth.domain.entity;
 
-import com.sparta.springsecurity.dto.SignupRequestDto;
+import com.sparta.springsecurity.auth.application.dto.SignupRequestDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,5 +33,9 @@ public class User {
         this.nickname = requestDto.getNickname();
         this.password = password;
         this.role = UserRoleEnum.USER;
+    }
+
+    public void updateRole(UserRoleEnum userRoleEnum) {
+        this.role = userRoleEnum;
     }
 }

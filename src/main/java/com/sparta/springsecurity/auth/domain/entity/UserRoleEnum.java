@@ -1,4 +1,4 @@
-package com.sparta.springsecurity.entity;
+package com.sparta.springsecurity.auth.domain.entity;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.sparta.springsecurity.dto;
+package com.sparta.springsecurity.auth.application.dto;
 
 import lombok.*;
 

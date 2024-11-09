@@ -1,22 +1,19 @@
-package com.sparta.springsecurity.dto;
+package com.sparta.springsecurity.auth.application.dto;
 
-import com.sparta.springsecurity.entity.User;
-import com.sparta.springsecurity.entity.UserRoleEnum;
+import com.sparta.springsecurity.auth.domain.entity.User;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @Setter
 public class SignupResponseDto {
     private String username;
-    private String password;
+    private String nickname;
     private String authorities;
 
     public SignupResponseDto(User user) {
         this.username = user.getUsername();
-        this.password = user.getPassword();
+        this.nickname = user.getNickname();
         this.authorities = user.getRole().getAuthority();
     }
 }
