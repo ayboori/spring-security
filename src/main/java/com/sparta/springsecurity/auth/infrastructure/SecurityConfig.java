@@ -63,7 +63,7 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll() // 메인 페이지 요청 허가
                         .requestMatchers("/auth/signup").permitAll() // 회원가입 요청 허가
                         .requestMatchers("/auth/sign").permitAll() // 로그인 요청 허가
-                        .requestMatchers("/v3/api-docs/**").permitAll()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**").permitAll() // swagger 요청 허가
                         .requestMatchers("/api-test/**").permitAll()
                         .anyRequest().authenticated() // 그 외 모든 요청 인증처리
         );
