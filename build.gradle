@@ -37,10 +37,15 @@ dependencies {
     // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    // JWT
-    compileOnly group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
-    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
-    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+    // jwt - 컴파일 및 런타임에 필요한 의존성
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    // jwt - 테스트에만 필요한 의존성
+    testImplementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    testImplementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    testImplementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

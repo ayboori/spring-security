@@ -28,6 +28,9 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
+    @Column(name = "refresh_token")
+    private String refreshToken;
+
     public User(SignupRequestDto requestDto, String password) {
         this.username = requestDto.getUsername();
         this.nickname = requestDto.getNickname();
@@ -37,5 +40,9 @@ public class User {
 
     public void updateRole(UserRoleEnum userRoleEnum) {
         this.role = userRoleEnum;
+    }
+
+    public void updateRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }
