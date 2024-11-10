@@ -17,3 +17,8 @@
 
 - Swagger 적용
   - http://localhost:8080/swagger-ui/index.html
+  - 아직 dev 환경에서만 확인 가능
+
+# 배포
+http://54.180.137.16:8080
+위 주소 뒤에 API 주소로 postman Test 가능
