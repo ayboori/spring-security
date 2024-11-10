@@ -74,11 +74,20 @@ public class JwtUtil {
                         .compact();
     }
 
-    // header 에서 JWT 가져오기
-    public String getJwtFromHeader(HttpServletRequest request) {
+    // header 에서 access Token JWT 가져오기
+    public String geAccessTokenFromHeader(HttpServletRequest request) {
         String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(BEARER_PREFIX)) {
             return bearerToken.substring(7);
+        }
+        return null;
+    }
+
+    // header에서 Refresh Token JWT 가져오기
+    public String getRefreshTokenFromHeader(HttpServletRequest request) {
+        String refreshToken = request.getHeader(REFRESH_HEADER);
+        if (StringUtils.hasText(refreshToken) && refreshToken.startsWith(BEARER_PREFIX)) {
+            return refreshToken.substring(7);  // "Bearer " 제거
         }
         return null;
     }
@@ -108,7 +117,7 @@ public class JwtUtil {
     // refresh token 기반  Refresh
     public Map<String,String> refresh(HttpServletRequest request, User user) {
         // Request Header에서 Refresh Token 추출
-        String refreshToken = request.getHeader(JwtUtil.REFRESH_HEADER);
+        String refreshToken = getRefreshTokenFromHeader(request);
 
         // Refresh Token이 유효할 경우 access token, refreshToken 재발급
         if (refreshToken != null && validateToken(refreshToken)) {
@@ -126,15 +135,9 @@ public class JwtUtil {
         }
     }
 
-    // 쿠키에서 refreshToken 추출 메서드
-    public String getRefreshTokenFromCookies(HttpServletRequest req) {
-        if (req.getCookies() != null) {
-            for (Cookie cookie : req.getCookies()) {
-                if ("refreshToken".equals(cookie.getName())) {
-                    return cookie.getValue();
-                }
-            }
-        }
-        return null;
+
+
+    public void setKey(Key key){
+        this.key = key;
     }
 }
