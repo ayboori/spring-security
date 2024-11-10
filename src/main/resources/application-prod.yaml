@@ -1,0 +1,12 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:postgresql://springsecurity-db.cnm68cc6k9ra.ap-northeast-2.rds.amazonaws.com:5432/springsecurity_db
+    username: postgres
+    password: passwordPostgre12!
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+    ddl-auto: validate # 또는 none
